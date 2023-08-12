@@ -11,9 +11,13 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import NavbarLogo from "./components/NavbarLogo";
+import SearchbarComponent from "./components/SearchbarComponent/SearchbarComponent";
+import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = ["Men", "Women", "Kids", "Home and Living", "Beauty", "Studio"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function Navbar() {
@@ -40,29 +44,17 @@ function Navbar() {
 	};
 
 	return (
-		<AppBar position="static">
-			<Container maxWidth="xl"> 
+		<AppBar
+			position="static"
+			style={{
+				margin: 0,
+				padding: 0,
+			}}
+			color="default"
+		>
+			<Container maxWidth="xl">
 				<Toolbar disableGutters>
-					<AdbIcon
-						sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-					/>
-					<Typography
-						variant="h6"
-						noWrap
-						component="a"
-						href="/"
-						sx={{
-							mr: 2,
-							display: { xs: "none", md: "flex" },
-							fontFamily: "monospace",
-							fontWeight: 700,
-							letterSpacing: ".3rem",
-							color: "inherit",
-							textDecoration: "none",
-						}}
-					>
-						LOGO
-					</Typography>
+					<NavbarLogo display={{ xs: "none", md: "flex" }} />
 
 					<Box
 						sx={{
@@ -110,27 +102,8 @@ function Navbar() {
 							))}
 						</Menu>
 					</Box>
-					<AdbIcon
-						sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-					/>
-					<Typography
-						variant="h5"
-						noWrap
-						component="a"
-						href=""
-						sx={{
-							mr: 2,
-							display: { xs: "flex", md: "none" },
-							flexGrow: 1,
-							fontFamily: "monospace",
-							fontWeight: 700,
-							letterSpacing: ".3rem",
-							color: "inherit",
-							textDecoration: "none",
-						}}
-					>
-						LOGO
-					</Typography>
+
+					<NavbarLogo display={{ xs: "flex", md: "none" }} />
 					<Box
 						sx={{
 							flexGrow: 1,
@@ -141,23 +114,46 @@ function Navbar() {
 							<Button
 								key={page}
 								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: "white", display: "block" }}
+								sx={{
+									my: 2,
+									display: "block",
+									color: "black",
+									fontWeight: "bold",
+									fontSize: "70%",
+								}}
 							>
 								{page}
 							</Button>
 						))}
 					</Box>
 
+					<SearchbarComponent />
+
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title="Open settings">
 							<IconButton
 								onClick={handleOpenUserMenu}
-								sx={{ p: 0 }}
+								sx={{ p: 2 }}
 							>
-								<Avatar
-									alt="Remy Sharp"
-									src="/static/images/avatar/2.jpg"
-								/>
+								<PermIdentityOutlinedIcon />
+							</IconButton>
+						</Tooltip>
+
+						<Tooltip title="Open settings">
+							<IconButton
+								// onClick={handleOpenUserMenu}
+								sx={{ p: 2 }}
+							>
+								<FavoriteBorderOutlinedIcon />
+							</IconButton>
+						</Tooltip>
+
+						<Tooltip title="Open settings">
+							<IconButton
+								// onClick={handleOpenUserMenu}
+								sx={{ p: 2 }}
+							>
+								<ShoppingBagOutlinedIcon />
 							</IconButton>
 						</Tooltip>
 						<Menu
