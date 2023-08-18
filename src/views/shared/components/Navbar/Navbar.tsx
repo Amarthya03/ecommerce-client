@@ -16,9 +16,12 @@ import SearchbarComponent from "./components/SearchbarComponent/SearchbarCompone
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import LoginButton from "../../../pages/Login";
+import LogoutButton from "../../../pages/Logout";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const pages = ["Men", "Women", "Kids", "Home and Living", "Beauty", "Studio"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Account", "Dashboard", "Edit Profile"];
 
 function Navbar() {
 	const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -42,6 +45,8 @@ function Navbar() {
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
 	};
+
+	const { user, isAuthenticated, isLoading } = useAuth0();
 
 	return (
 		<AppBar
@@ -172,16 +177,29 @@ function Navbar() {
 							open={Boolean(anchorElUser)}
 							onClose={handleCloseUserMenu}
 						>
-							{settings.map((setting) => (
-								<MenuItem
-									key={setting}
-									onClick={handleCloseUserMenu}
-								>
-									<Typography textAlign="center">
-										{setting}
+							{isAuthenticated && (
+								<MenuItem>
+									<Typography>
+										Hi {user?.given_name}
 									</Typography>
 								</MenuItem>
-							))}
+							)}
+							{isAuthenticated &&
+								settings.map((setting) => (
+									<MenuItem
+										key={setting}
+										onClick={handleCloseUserMenu}
+									>
+										<Typography textAlign="center">
+											{setting}
+										</Typography>
+									</MenuItem>
+								))}
+							{isAuthenticated ? (
+								<LogoutButton />
+							) : (
+								<LoginButton />
+							)}
 						</Menu>
 					</Box>
 				</Toolbar>
