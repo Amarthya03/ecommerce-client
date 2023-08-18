@@ -16,8 +16,8 @@ import SearchbarComponent from "./components/SearchbarComponent/SearchbarCompone
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-import LoginButton from "../../../pages/Login";
-import LogoutButton from "../../../pages/Logout";
+import LoginButton from "../../../views/pages/Login/index";
+import LogoutButton from "../../../views/pages/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const pages = ["Men", "Women", "Kids", "Home and Living", "Beauty", "Studio"];

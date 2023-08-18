@@ -5,22 +5,26 @@ import { ThemeProvider } from "@emotion/react";
 import { theme } from "./MaterialTheme";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { env } from "../../environments/environments";
+import { Provider } from "react-redux";
+import { store } from "../../store/rootStore";
 
 function App() {
 	return (
-		<Auth0Provider
-			domain={env.domain}
-			clientId={env.clientId}
-			authorizationParams={{
-				redirect_uri: "http://localhost:5173/",
-			}}
-		>
-			<ThemeProvider theme={theme}>
-				<BrowserRouter>
-					<Router />
-				</BrowserRouter>
-			</ThemeProvider>
-		</Auth0Provider>
+		<Provider store={store}>
+			<Auth0Provider
+				domain={env.domain}
+				clientId={env.clientId}
+				authorizationParams={{
+					redirect_uri: "http://localhost:5173/",
+				}}
+			>
+				<ThemeProvider theme={theme}>
+					<BrowserRouter>
+						<Router />
+					</BrowserRouter>
+				</ThemeProvider>
+			</Auth0Provider>
+		</Provider>
 	);
 }
 
