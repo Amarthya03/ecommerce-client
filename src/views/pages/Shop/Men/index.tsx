@@ -6,6 +6,9 @@ import {
 	getProductsError,
 	getProductsStatus,
 } from "../../../../store/products/productsSlice";
+import CardComponent from "../../../../shared/components/CardComponent/CardComponent";
+import LoaderComponent from "../../../../shared/components/LoaderComponent/LoaderComponent";
+import { Container, Grid } from "@mui/material";
 
 const ShopMen = () => {
 	const dispatch = useDispatch();
@@ -18,13 +21,27 @@ const ShopMen = () => {
 	}, [productsStatus, dispatch]);
 
 	return (
-		<div>
-			{productsStatus === "succeeded"
-				? products.map((el) => (
-						<div key={el.id.toString()}>1 {el.brand}</div>
-				  ))
-				: "loading"}
-		</div>
+		<Container>
+			<Grid container spacing={2}>
+				{productsStatus === "succeeded" ? (
+					products.map((el) => (
+						<Grid item xs={3}>
+							<CardComponent
+								brand={el.brand}
+								discount={el.discount}
+								image={el.image}
+								name={el.name}
+								price={el.price}
+								rating={el.rating}
+								id={el.id}
+							/>
+						</Grid>
+					))
+				) : (
+					<LoaderComponent />
+				)}
+			</Grid>
+		</Container>
 	);
 };
 

@@ -12,10 +12,12 @@ export const getProductsGraphQl = async () => {
 							id
 							name
 							price
+							discount
 							brand
 							image
 							info
 							color
+							rating
 							category
 							sizes
 						}
