@@ -1,14 +1,14 @@
 import axios from "axios";
 import { env } from "../../../environments/environments";
 
-export const getProductsGraphQl = async () => {
+export const getProductByIdGraphQl = async (id: Number) => {
 	const headers = {
 		"content-type": "application/json",
 	};
 	const graphqlQuery = {
-		operationName: "getProductsGraphQl",
-		query: `query getProductsGraphQl {
-						products {
+		operationName: "getProductByIdGraphQl",
+		query: `query getProductByIdGraphQl {
+						productById (id: ${id}) {
 							id
 							name
 							price
@@ -31,5 +31,5 @@ export const getProductsGraphQl = async () => {
 		data: graphqlQuery,
 	});
 
-	return res.data.data.products;
+	return res.data.data.productById;
 };

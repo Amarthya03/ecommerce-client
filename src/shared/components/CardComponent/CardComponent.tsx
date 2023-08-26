@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PriceComponent from "./PriceComponent/PriceComponent";
+import { Link } from "react-router-dom";
 
 interface Props {
 	id: number;
@@ -38,7 +39,7 @@ export default function CardComponent({
 			<CardContent>
 				<Typography variant="body1">{brand}</Typography>
 				<Typography variant="body2" color="text.secondary">
-					{name}
+					<Link to={`/shop/product/${id}`}>{name}</Link>
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
 					{discount ? (
