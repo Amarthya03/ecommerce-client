@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
+
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
@@ -8,6 +8,9 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PriceComponent from "./PriceComponent/PriceComponent";
 import { Link } from "react-router-dom";
+import LoaderComponent from "../LoaderComponent/LoaderComponent";
+
+const CardMedia = lazy(() => import("@mui/material/CardMedia"));
 
 interface Props {
 	id: number;
@@ -28,14 +31,20 @@ export default function CardComponent({
 	image,
 	rating,
 }: Props) {
+	const handleWishlistClick = () => {
+		console.log(`${id} clicked`);
+	};
+
 	return (
 		<Card sx={{ height: 450 }} key={id}>
-			<CardMedia
-				component="img"
-				height="194"
-				image={image}
-				alt="Paella dish"
-			/>
+			<Suspense fallback={<LoaderComponent />}>
+				<CardMedia
+					component="img"
+					height="194"
+					image={image}
+					alt="Paella dish"
+				/>
+			</Suspense>
 			<CardContent>
 				<Typography variant="body1">{brand}</Typography>
 				<Typography variant="body2" color="text.secondary">
@@ -53,7 +62,11 @@ export default function CardComponent({
 				</Typography>
 			</CardContent>
 			<CardActions disableSpacing>
-				<IconButton aria-label="add to favorites">
+				<IconButton
+					onClick={handleWishlistClick}
+					aria-label="add to favorites"
+					color="error"
+				>
 					<FavoriteIcon />
 				</IconButton>
 			</CardActions>

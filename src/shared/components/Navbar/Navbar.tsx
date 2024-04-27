@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
@@ -19,9 +18,10 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import LoginButton from "../../../views/pages/Login/index";
 import LogoutButton from "../../../views/pages/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
+import { NavLink } from "react-router-dom";
 
 const pages = ["Men", "Women", "Kids", "Home and Living", "Beauty", "Studio"];
-const settings = ["Profile", "Account", "Dashboard", "Edit Profile"];
+const settings = ["Orders", "Edit Profile"];
 
 function Navbar() {
 	const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -100,9 +100,11 @@ function Navbar() {
 									key={page}
 									onClick={handleCloseNavMenu}
 								>
-									<Typography textAlign="center">
-										{page}
-									</Typography>
+									<NavLink to="/shop/men">
+										<Typography textAlign="center">
+											{page}
+										</Typography>
+									</NavLink>
 								</MenuItem>
 							))}
 						</Menu>
@@ -118,16 +120,21 @@ function Navbar() {
 						{pages.map((page) => (
 							<Button
 								key={page}
-								onClick={handleCloseNavMenu}
 								sx={{
 									my: 2,
 									display: "block",
 									color: "black",
 									fontWeight: "bold",
-									fontSize: "70%",
+									fontSize: "90%",
 								}}
 							>
-								{page}
+								<NavLink
+									to={`/shop/${page
+										.replaceAll(" ", "_")
+										.toLowerCase()}`}
+								>
+									{page}
+								</NavLink>
 							</Button>
 						))}
 					</Box>
@@ -135,7 +142,7 @@ function Navbar() {
 					<SearchbarComponent />
 
 					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title="Open settings">
+						<Tooltip title="Profile">
 							<IconButton
 								onClick={handleOpenUserMenu}
 								sx={{ p: 2 }}
@@ -144,7 +151,7 @@ function Navbar() {
 							</IconButton>
 						</Tooltip>
 
-						<Tooltip title="Open settings">
+						<Tooltip title="Wishlist">
 							<IconButton
 								// onClick={handleOpenUserMenu}
 								sx={{ p: 2 }}
@@ -153,7 +160,7 @@ function Navbar() {
 							</IconButton>
 						</Tooltip>
 
-						<Tooltip title="Open settings">
+						<Tooltip title="Cart">
 							<IconButton
 								// onClick={handleOpenUserMenu}
 								sx={{ p: 2 }}
@@ -190,9 +197,15 @@ function Navbar() {
 										key={setting}
 										onClick={handleCloseUserMenu}
 									>
-										<Typography textAlign="center">
-											{setting}
-										</Typography>
+										<NavLink
+											to={`/${setting
+												.replaceAll(" ", "_")
+												.toLowerCase()}`}
+										>
+											<Typography textAlign="center">
+												{setting}
+											</Typography>
+										</NavLink>
 									</MenuItem>
 								))}
 							{isAuthenticated ? (
