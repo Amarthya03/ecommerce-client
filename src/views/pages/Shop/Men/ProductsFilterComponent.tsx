@@ -5,14 +5,12 @@ import {
 	MenuItem,
 	Select,
 	SelectChangeEvent,
-	SelectProps,
 } from "@mui/material";
-import React, { ChangeEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	getProductsSortedBy,
 	sortItemsBy,
-} from "../../../../store/products/productsSlice";
+} from "@/store/products/productsSlice";
 
 const ProductsFilterComponent = () => {
 	const dispatch = useDispatch();

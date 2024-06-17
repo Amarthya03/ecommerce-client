@@ -5,9 +5,10 @@ import {
 	getProductsPageCount,
 	getProductsPaginationItems,
 	getProductsStatus,
+	setPageNumber,
 	setPaginationItems,
-} from "../../../../store/products/productsSlice";
-import LoaderComponent from "../../../../shared/components/LoaderComponent/LoaderComponent";
+} from "@/store/products/productsSlice";
+import LoaderComponent from "@/shared/components/LoaderComponent/LoaderComponent";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Container, Grid, Pagination, PaginationItem } from "@mui/material";
@@ -25,10 +26,8 @@ const ShopMen = () => {
 		if (productsStatus === "idle") dispatch(getProducts());
 	}, [productsStatus, dispatch]);
 
-	const [page, setPage] = useState<number>(1);
-
 	const handleChange = (event: ChangeEvent<unknown>, value: number) => {
-		setPage(value);
+		dispatch(setPageNumber(value));
 		dispatch(setPaginationItems(value));
 	};
 

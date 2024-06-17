@@ -1,5 +1,5 @@
 import axios from "axios";
-import { env } from "../../../environments/environments";
+import { env } from "@/environments/environments";
 
 export const getCartThunk = async () => {
 	const headers = {

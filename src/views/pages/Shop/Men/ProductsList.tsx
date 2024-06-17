@@ -1,7 +1,6 @@
-import React from "react";
-import { Product } from "../../../../shared/types/Product";
+import { Product } from "@/shared/types/Product";
 import { Grid } from "@mui/material";
-import CardComponent from "../../../../shared/components/CardComponent/CardComponent";
+import CardComponent from "@/shared/components/CardComponent/CardComponent";
 
 interface Props {
 	paginationItems: Product[];

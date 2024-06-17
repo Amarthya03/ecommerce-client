@@ -1,6 +1,5 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
-import image from "../../../assets/images/myntraLogo.png";
+import image from "@/shared/assets/images/myntraLogo.png";
 import { Container } from "@mui/material";
 
 interface Props {

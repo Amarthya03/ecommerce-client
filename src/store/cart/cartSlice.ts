@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Cart } from "../../shared/types/Cart";
+import { Cart } from "@/shared/types/Cart";
 import { getCartThunk } from "./thunks/getCartThunk";
 import { addToCartThunk } from "./thunks/addToCartThunk";
 

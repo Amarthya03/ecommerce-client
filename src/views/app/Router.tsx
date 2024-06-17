@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "../../shared/components/Navbar/Navbar";
-import ShopMen from "../pages/Shop/Men";
-import Home from "../pages/Home";
-import ProductInfo from "../pages/Shop/ProductInfo";
-import Profile from "../pages/Profile";
+import Navbar from "@/shared/components/Navbar/Navbar";
+import ShopMen from "@/views/pages/Shop/Men";
+import Home from "@/views/pages/Home";
+import ProductInfo from "@/views/pages/Shop/ProductInfo";
+import Profile from "@/views/pages/Profile";
 
 const Router = () => {
 	return (

@@ -15,6 +15,7 @@
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.15",
     "@reduxjs/toolkit": "^1.9.5",
+    "@rollup/plugin-alias": "^5.1.0",
     "@types/node-sass": "^4.11.3",
     "axios": "^1.4.0",
     "node-sass": "^8.0.0",

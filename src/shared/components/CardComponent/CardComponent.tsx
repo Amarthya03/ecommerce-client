@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PriceComponent from "./PriceComponent/PriceComponent";
 import { Link } from "react-router-dom";
-import LoaderComponent from "../LoaderComponent/LoaderComponent";
+import LoaderComponent from "@/shared/components/LoaderComponent/LoaderComponent";
 
 const CardMedia = lazy(() => import("@mui/material/CardMedia"));
 
